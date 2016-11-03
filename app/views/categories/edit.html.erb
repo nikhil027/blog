@@ -1,0 +1,21 @@
+<h2>Edit Category</h2>
+
+<%= form_for @category do |f|%>
+
+<%if @category.errors.any? %>
+	<div class="errors" style="color: red;">
+	<h3>These errors prohibited the form from being saved:</h3>
+	<ul>
+		<%@category.errors.full_messages.each do |msg|%>
+			<li><%= msg%></li>
+		<%end%>
+	</ul>
+	</div>
+	<%end%>
+
+	<%=f.label :name%><br>
+	<%=f.text_field :name%><br>
+
+
+	<%=f.submit%>
+<%end%>	

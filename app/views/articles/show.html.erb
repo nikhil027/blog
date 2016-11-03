@@ -1,0 +1,67 @@
+<h2><%= @article.title %> </h2>
+
+<p><%= @article.body %></p>
+
+<b><%= @article.user.email%></b>
+
+
+<%=link_to "Back", articles_path %>
+<%if @article.user_id==current_user.id%>
+  <%=link_to "Edit Article", edit_article_path(@article.id) %>
+  <%=link_to "Delete Article", article_path(@article.id), method: :delete, data: {confirm: "Are u sure ???"}  %>
+<%end%>  
+
+<br>
+
+<br>
+
+<h4>Comments</h4>
+<ul>
+	<%@comments.each do |comment|%>
+		<li><%=comment.comment_body%></li>
+		<%if comment.user_id == current_user.id%>
+			<%= link_to "Edit Comment", edit_comment_path %>
+			<%= link_to "Delete Comment", comment_path(comment.id), method: :delete, data: {confirm: "Are you sure"}%>
+		<%end%>
+	<%end%>		
+
+</ul>
+
+<h3>Add Comment </h3>
+
+<%= form_for @comment do |f|%>
+
+<%if @comment.errors.any? %>
+	<div class="errors" style="color: red;">
+	<h3>These errors prohibited the form from being saved:</h3>
+	<ul>
+		<%@comment.errors.full_messages.each do |msg|%>
+			<li><%= msg%></li>
+		<%end%>
+	</ul>
+	</div>
+	<%end%>
+
+	
+	<%=f.hidden_field :article_id, :value => @article.id%><br>
+
+	
+	<%=f.text_area :comment_body%><br>
+
+
+	</br>
+
+
+	<br>
+	<br>
+
+
+	<%=f.submit "Submit"%>
+
+<%end%>	
+
+
+
+<!-- 
+
+<end%>	 -->

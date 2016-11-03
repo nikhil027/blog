@@ -1,0 +1,14 @@
+1. Create a new app as blog
+2. Setup Authentication System using devise
+3. Create Article Model with attributes like  title, body, user_id, published_on
+4. Create Comment Model with attributes like  article_id, body, user_id
+4a. Create Category Model with attributes like name
+4b. Create ArticeCategory Model with attriubtes article_id & category_id
+5.Define Associations between all 5 models
+6. Create Controllers & Views of all 7 actions for Articles, Categories
+7. Create a provision to add a  comments on show page of the article
+    *hint -> use hidden field input type for passing article_id
+8. Provide a provision to delete a comment on the show page of articles, but link  should be displayed only if the user is the owner of the comment
+9.User can see all articles under Articles index & define a new custom action called my_articles in the articles controller & display his articles in the view page (my_articles.html.erb)
+10.Display in the article list only if publish_on is less than today
+11. List articles based on categories
